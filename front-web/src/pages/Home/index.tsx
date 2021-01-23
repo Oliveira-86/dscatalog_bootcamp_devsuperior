@@ -2,14 +2,14 @@ import React from 'react';
 import { ReactComponent as MainImage } from '../../core/assets/images/main-image.svg';
 import '../../core/components/ButtonIcon/index';
 import ButtonIcon from '../../core/components/ButtonIcon/index';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './styles.scss'
 
 const Home = () =>  (
     <div className="home-container">
         <h1>
-            <div className="row home-content">
+            <div className="row home-content card-base border-radius-20">
                 <div className="col-6">
                     <h1 className="text-title">
                         Conheça o melhor <br/> catálogo de produtos
