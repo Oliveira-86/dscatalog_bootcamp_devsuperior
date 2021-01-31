@@ -1,4 +1,3 @@
-import { type } from 'os';
 import React from 'react';
 import { ReactComponent as  ArrowIcon } from '../../assets/images/Arrow.svg'
 import './styles.scss'
@@ -12,7 +11,7 @@ const ButtonIcon = ({ text }: Props) => (
         <button className="btn btn-primary btn-icon">
             <h5>{text}</h5>
         </button>
-        <div className="btn-icon-content">
+        <div className="btn-icon-content">  
             <ArrowIcon />
         </div>
    </div>
