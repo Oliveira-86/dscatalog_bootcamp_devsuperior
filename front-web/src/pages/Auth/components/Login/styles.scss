@@ -1,0 +1,37 @@
+.auth-form {
+    margin-top: 85px;
+}
+
+.login-link-recover {
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: -0.015em;
+    color: #407BFF;
+    margin-top: 15px;
+    display: block; //como a Link do react-router-dom o seu display por padrão é inline, termos que transforma em block para que dê  efeito as margins 
+}
+
+.login-submit {
+    margin-top: 100px;
+    margin-bottom: 35px;
+}
+
+.not-register {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    letter-spacing: -0.015em;
+    color: #9E9E9E;
+}
+
+.login-link-register {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    letter-spacing: -0.015em;
+    text-decoration-line: underline;
+    color: #407BFF;
+    margin-left: 8px;
+}
