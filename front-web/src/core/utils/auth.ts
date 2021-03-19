@@ -1,4 +1,5 @@
 import jwtDecode from 'jwt-decode';
+import history from './history';
 
 export const CLIENT_ID = 'dscatalog';
 export const CLIENT_SECRET = 'dscatalog123';
@@ -16,7 +17,7 @@ export type Role = 'ROLE_OPERATOR' | 'ROLE_ADMIN';
 
 type AccessToken = {
     exp: number;
-    username: string;
+    user_name: string;
     authorities: Role[];
 }
 
@@ -63,4 +64,9 @@ export const isAllowedByRole = (routeRole: Role[] = []) => {
     const { authorities } = getAccessTokenDecode();
 
     return routeRole.some(role => authorities?.includes(role));
+}
+
+export const logout = () => {
+    localStorage.removeItem('authData');
+    history.replace('/auth/login');
 }
