@@ -6,7 +6,7 @@ import ProductCard from './components/ProductCard';
 import ProductCardLoader from './components/Loaders/ProductCardLoader';
 import './styles.scss';
 import Pagination from 'core/components/Pagination';
-import { act } from '@testing-library/react';
+
 
 const Catalog = () =>  {
 

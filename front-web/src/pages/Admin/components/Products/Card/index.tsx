@@ -1,25 +1,33 @@
 import ProductPrice from 'core/components/ProductPrice';
+import { Product } from 'core/types/Product';
 import './styles.scss';
 
-const Card = () => {
+type Props = {
+    product: Product;
+}
+
+const Card = ({ product }: Props) => {
     return (
        <div className="card-base product-card-admin">
             <div className="row">
                 <div className="col-2 text-center border-right py-3">
                     <img 
-                        src="https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/4-big.jpg" 
-                        alt="Produto teste"
+                        src={product.imgUrl}
+                        alt={product.name}
                         className="product-card-img-admin"
                     />
                 </div>
                 <div className="col-7 py-3">
                     <h3 className="product-card-name-admin"> 
-                        Computador Desktop - Intel Core i7
+                        {product.name}
                     </h3>
-                    <ProductPrice price={40.5} />
-                    <span className="badge rounded-pill bg-secondary mr-2">Categoria 1</span>
-                    <span className="badge rounded-pill bg-secondary mr-2">Categoria 2</span>
-                    <span className="badge rounded-pill bg-secondary mr-2">Categoria 3</span>
+                    <ProductPrice price={product.price} />
+                    {product.categories.map(category => (
+                        <span className="badge rounded-pill bg-secondary mr-2">
+                            {product.categories}
+                        </span>
+                    ))}
+                  
                 </div>
                 <div className="col-3 pt-3 pr-5">
                     <button 
