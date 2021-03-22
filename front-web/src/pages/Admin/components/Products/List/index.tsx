@@ -1,23 +1,24 @@
-import React from 'react';
 import { useHistory } from 'react-router-dom'
 import Card from '../Card';
 import { ProductsResponse } from 'core/types/Product';
-import { makeResquest } from 'core/utils/request';
-import { useEffect, useState } from 'react';
+import { makePrivateRequest, makeResquest } from 'core/utils/request';
+import { useEffect, useState, useCallback } from 'react';
 import Pagination from 'core/components/Pagination';
-
-
+import { toast } from 'react-toastify';
 
 const List = () => {
 
     const [productsResponse, setProductsResponse] = useState<ProductsResponse>();
     const [ isLoading, setIsLoading] = useState(false);
     const [ activePage, setActivePage ] = useState(0);
+    const history = useHistory(); // o useHistory é hook, ou seja, é um função que pode ser usada dentro de um componente.
     
-    useEffect(() => {
+    const getProducts = useCallback(() => {
         const params = {
             page: activePage,
-            linesPerPage: 4
+            linesPerPage: 4,
+            direction: 'DESC',
+            orderBy: 'id'
         }
 
         setIsLoading(true);
@@ -26,11 +27,30 @@ const List = () => {
             .finally(() => {
                 setIsLoading(false);
             }) 
-    }, [activePage]); 
-    const history = useHistory(); // o useHistory é hook, ou seja, é um função que pode ser usada dentro de um componente.
+    }, [activePage])
+
+//useEffect é usado para acessar o ciclo de vida do componente
+    useEffect(() => {
+        getProducts();
+    }, [getProducts]);
 
     const handleCreate = () => {
         history.push('/admin/products/create');
+    }
+
+    const onRemove = (productId: number) => {
+        const confirm = window.confirm('Deseja realmente excluir esse produto?')
+
+        if (confirm) {
+            makePrivateRequest({ url: `/products/${productId}`, method: 'DELETE' })
+                .then(() => {
+                    toast.info('Produto removido com sucesso!!');
+                    getProducts();
+                })
+                .catch(() => {
+                    toast.error('Erro ao remover o produto')
+                })
+        }
     }
 
     return (
@@ -40,7 +60,7 @@ const List = () => {
             </button>
             <div className="admin-list-container">
                {productsResponse?.content.map(product => (
-                   <Card product={product} key={product.id} />
+                   <Card product={product} key={product.id} onRemove={onRemove} />
                ))}
                 {productsResponse && (
                 <Pagination 
