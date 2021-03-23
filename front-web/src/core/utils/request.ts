@@ -1,14 +1,6 @@
-import axios, { Method } from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import { CLIENT_ID, CLIENT_SECRET, getSessionData, logout } from './auth';
 import qs from 'qs';
-
-type RequestParams = {
-    method?: Method;
-    url: string;
-    data?: object | string;
-    params?: object;
-    headers?: object;
-}
 
 type LoginData = {
     username: string;
@@ -26,24 +18,21 @@ axios.interceptors.response.use(function(response) {
     return Promise.reject(error);
 });
 
-export const makeResquest = ({ method='GET', url, data, params, headers }:RequestParams) => {
+export const makeResquest = (params: AxiosRequestConfig) => {
     return axios({
-        method,
-        url: `${URL_BASE}${url}`,
-        data,
-        params,
-        headers
+        ...params,
+        baseURL: URL_BASE
     });
 }
 
-export const makePrivateRequest = ({ method='GET', url, data, params, }: RequestParams) => {
+export const makePrivateRequest = (params: AxiosRequestConfig) => {
     const sessionData = getSessionData();
 
     const headers = {
         'Authorization': `Bearer ${sessionData.access_token}`
     }
 
-    return makeResquest({ method, url, data, params, headers });
+    return makeResquest({ ...params, headers });
 }
 
 export const makeLogin = (loginData: LoginData) => {
