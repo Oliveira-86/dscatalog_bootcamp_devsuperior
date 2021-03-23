@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ProductsResponse } from '../../core/types/Product';
+import { Category, ProductsResponse } from '../../core/types/Product';
 import { makeResquest } from '../../core/utils/request';
 import ProductCard from './components/ProductCard';
 import ProductCardLoader from './components/Loaders/ProductCardLoader';
 import './styles.scss';
 import Pagination from 'core/components/Pagination';
-import ProductFilters, { FilterForm } from 'core/components/ProductFilters';
+import ProductFilters from 'core/components/ProductFilters';
 
 
 const Catalog = () => {
@@ -14,13 +14,15 @@ const Catalog = () => {
     const [productsResponse, setProductsResponse] = useState<ProductsResponse>();
     const [isLoading, setIsLoading] = useState(false);
     const [activePage, setActivePage] = useState(0);
+    const [name, setName] = useState('');
+    const [category, setCategory] = useState<Category>();
 
-    const getProduct = useCallback((filter?: FilterForm) => {
+    const getProduct = useCallback(() => {
         const params = {
             page: activePage,
             linesPerPage: 12,
-            name: filter?.name,
-            categoryId: filter?.categoryId
+            name: name,
+            categoryId: category?.id
         }
 
         setIsLoading(true);
@@ -29,11 +31,30 @@ const Catalog = () => {
             .finally(() => {
                 setIsLoading(false);
             })
-    }, [activePage]);
+    }, [activePage, name, category]);
 
     useEffect(() => {
        getProduct();
     }, [getProduct]);
+
+    const handleChangeName = (name: string) => {
+        setActivePage(0);
+        setName(name);
+
+    }
+
+    const handleChangeCategory = (category: Category) => {
+        setActivePage(0);
+        setCategory(category);
+
+    }
+
+    const clearFilter = () => {
+        setActivePage(0);
+        setCategory(undefined);
+        setName('');
+
+    }
 
     return (
         <div className="catalog-container">
@@ -41,7 +62,13 @@ const Catalog = () => {
                 <h1 className="catalog-title">
                     Catálogo de produtos
                 </h1>
-                <ProductFilters onSearch={filter => getProduct(filter)} />
+                <ProductFilters 
+                    name={name}
+                    category={category}
+                    handleChangeName={handleChangeName}
+                    handleChangeCategory={handleChangeCategory}
+                    clearFilter={clearFilter}
+                />
             </div>
             <div className="catalog-product">
                 {isLoading ? <ProductCardLoader /> : (
