@@ -3,6 +3,11 @@
     padding: 0 40px 50px 40px;
 }
 
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+}
+
 .catalog-title {
     font-size: 24px;
     line-height: 33px;
@@ -24,4 +29,20 @@
 
 .product-details .product-currency {
     font-size: 28px;
+}
+
+@media (max-width: 768px) {
+    .filter-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .catalog-title {
+        margin-bottom: 20px;
+    }
+
+    .catalog-product {
+        grid-template-columns: repeat(auto-fill, 200px);
+        grid-gap: 33px 10px;
+    }
 }

@@ -2,7 +2,7 @@
     display: flex;
     padding: 40px 40px 135px 0;
     justify-content: center;
-    background: url(~core/assets/images/bg-login.svg) no-repeat;
+    background: url(~core/assets/images/bg-login.svg) no-repeat bottom;
     background-size: 100%;
 }
 
@@ -26,4 +26,11 @@
     line-height: 33px;
     letter-spacing: -0.015em;
     color: #9E9E9E;
+}
+
+@media (max-width: 768px) {
+
+    .auth-info-content {
+        display: none;
+    }
 }

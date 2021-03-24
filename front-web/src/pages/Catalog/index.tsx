@@ -20,7 +20,7 @@ const Catalog = () => {
     const getProduct = useCallback(() => {
         const params = {
             page: activePage,
-            linesPerPage: 12,
+            linesPerPage:12,
             name: name,
             categoryId: category?.id
         }
@@ -58,7 +58,7 @@ const Catalog = () => {
 
     return (
         <div className="catalog-container">
-            <div className="d-flex justify-content-between">
+            <div className="filter-container">
                 <h1 className="catalog-title">
                     Catálogo de produtos
                 </h1>
