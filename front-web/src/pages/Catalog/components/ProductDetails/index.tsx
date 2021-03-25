@@ -35,7 +35,7 @@ const ProductDetails = () => {
                 </Link>
                 <div className="product-details-info ">                   
                         {isLoading ? <ProductInfoLoader /> : (
-                            <>
+                            <div className="product-details-info-content">
                                 <div className="product-details-card text-center">
                                     <img src={product?.imgUrl} alt={product?.name} className="product-image" />
                                 </div>
@@ -45,7 +45,7 @@ const ProductDetails = () => {
                                     </h1>
                                     {product?.price && <ProductPrice price={product?.price} />}
                                 </div>
-                            </>
+                            </div>
                         )}                   
                     <div className="product-details-card">
                         {isLoading ? <ProductDescriptionLoader /> : (

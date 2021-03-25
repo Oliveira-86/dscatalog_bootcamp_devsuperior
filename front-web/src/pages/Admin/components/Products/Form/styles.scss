@@ -1,3 +1,7 @@
+.product-form-container {
+    display: flex;
+}
+
 .categories-select__control {
     height: 50px;
     border-radius: 10px !important;
@@ -10,4 +14,33 @@
 
 .categories-select__placeholder {
     color: #9E9E9E !important;
+}
+
+.form-image-upload {
+    margin-bottom: 30px;
+}
+
+@media (max-width: 576px) {
+
+    .product-form-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-left: -15px;
+
+    input {
+        width: 250px;
+    }
+
+    .input-base {
+        width: 250px;
+    }
+
+    .categories-select__control {
+        width: 250px;
+        min-width: 50px;
+        height: 100%;
+    }
+
+  }
 }

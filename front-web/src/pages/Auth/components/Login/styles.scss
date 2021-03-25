@@ -35,3 +35,10 @@
     color: #407BFF;
     margin-left: 8px;
 }
+
+@media (max-width: 576px) {
+    
+    .auth-form {
+        margin-top: 50px;
+    }
+}

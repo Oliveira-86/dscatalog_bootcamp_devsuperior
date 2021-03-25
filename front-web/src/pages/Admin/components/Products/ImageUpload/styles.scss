@@ -49,8 +49,26 @@
 
 @media (max-width: 768px) {
 
+    .upload-button-container label {      
+        width: 200px      
+    }
+
     .upload-placeholder {
-      width: 70px;
-      height: 70px;
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .upload-button-container label {
+        width: 250px;
+    }
+
+    small {
+        display: none;
+    }
+
+    .upload-placeholder {
+        display: none;
     }
 }
