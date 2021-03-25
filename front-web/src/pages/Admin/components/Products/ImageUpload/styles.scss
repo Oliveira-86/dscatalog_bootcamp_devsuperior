@@ -1,3 +1,11 @@
+.upload-container {
+    display: flex;
+}
+
+.upload-content {
+    width: 50%;
+}
+
 .upload-button-container {
     label {
         background: #9E9E9E;
@@ -20,6 +28,7 @@
 }
 
 .upload-placeholder {
+
     .upload-progress-container {
         position: absolute;
         bottom: 10px;
@@ -35,5 +44,13 @@
         border-radius: 10px;
         height: 10px;
         width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .upload-placeholder {
+      width: 70px;
+      height: 70px;
     }
 }

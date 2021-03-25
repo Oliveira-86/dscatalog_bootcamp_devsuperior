@@ -7,8 +7,8 @@ const ImageUpload = () => {
     }
 
     return (
-        <div className="row">
-            <div className="col-6 ">
+        <div className="upload-container">
+            <div className="upload-content">
                 <div className="upload-button-container">
                     <input 
                         type="file"

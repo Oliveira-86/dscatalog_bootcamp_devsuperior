@@ -62,3 +62,38 @@
         margin-bottom: 60px;
     }
 }
+
+@media (max-width: 576px) {
+
+    .home-container {
+        margin-top: 5px;
+        padding: 10px;
+    }
+
+    .home-content {
+        width: 315px;
+        flex-direction: column-reverse;
+        padding: 0%;
+        margin-right: 0%;
+    }
+
+    .main-image {
+        width: 70vw !important;
+        margin: -100px 0 -80px -80px;
+    }
+
+    .text-title {
+        font-size: 1.5rem;
+        text-align: center;
+        line-height: 30px;
+        letter-spacing: 0;
+    }
+
+    .text-subtitle {
+        font-size: 0.7em;
+        text-align: center;
+        line-height: 20px;
+        font-weight: 400;
+        margin-bottom: 30px;
+    }
+}

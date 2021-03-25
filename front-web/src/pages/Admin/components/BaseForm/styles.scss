@@ -16,3 +16,10 @@
 .base-form-action {
     text-align: right;
 }
+
+@media (max-width: 768px) {
+
+    .admin-base-form {
+        width: 100%;
+    }
+}
